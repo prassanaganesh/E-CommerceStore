@@ -28,8 +28,6 @@ This project deploys a multi-service Node.js E-Commerce application using:
 
 # 2. Architecture
 
-```
-
 text
                          Internet
                             |
@@ -56,7 +54,7 @@ text
         +---------- Cart Service     3003
         |
         +---------- Order Service    3004
-4. Docker Images
+# 4. Docker Images
 
 The following five application services were containerized:
 
@@ -86,7 +84,7 @@ docker images | grep ecommerce
 
 <img width="1791" height="142" alt="image" src="https://github.com/user-attachments/assets/4c3f3f0c-e375-4c58-8036-091d7cdb8a2b" />
 
-5. Local Docker Testing
+# 5. Local Docker Testing
 
 Run the frontend locally:
 
@@ -111,7 +109,7 @@ docker logs ecommerce-frontend-test
 Remove test container:
 
 docker rm -f ecommerce-frontend-test
-6. Docker Hub
+# 6. Docker Hub
 
 Login:
 
@@ -135,7 +133,7 @@ Docker Hub:
 https://hub.docker.com/u/prassanaganesh
 <img width="1557" height="272" alt="image" src="https://github.com/user-attachments/assets/c11f5f4c-1c49-424e-9971-af8e8a18d27d" />
 
-7. Terraform Infrastructure
+# 7. Terraform Infrastructure
 
 Terraform provisions:
 
@@ -172,7 +170,7 @@ terraform apply -var="key_name=<ecommerce-assignment-key>"
 
 <img width="1701" height="495" alt="image" src="https://github.com/user-attachments/assets/24eb32c9-acee-4c04-ae99-f34dd9ff620d" />
 
-8. Terraform Outputs
+# 8. Terraform Outputs
 
 After deployment:
 
@@ -224,7 +222,8 @@ Port	Purpose	Access
 3003	Cart Service	Internal
 3004	Order Service	Internal
 27017	MongoDB	Internal
-10. EC2 Verification
+
+# 10. EC2 Verification
 
 SSH into the server:
 
@@ -246,7 +245,7 @@ ecommerce-product
 ecommerce-cart
 ecommerce-order
 ecommerce-mongo
-11. Backend Verification
+# 11. Backend Verification
 
 Test User Service:
 
@@ -271,7 +270,7 @@ curl http://localhost:3004/health
 If the application uses a different health endpoint, verify the service using its available API endpoint.
 <img width="1917" height="1010" alt="image" src="https://github.com/user-attachments/assets/1e14ee5e-7cad-4b9b-bb05-3de22a31795a" />
 
-12. Docker Network Verification
+# 12. Docker Network Verification
 
 List networks:
 
@@ -287,7 +286,7 @@ ecommerce-net
 
 This allows the services to communicate using Docker container names.
 
-13. Container Logs
+# 13. Container Logs
 
 Frontend:
 
@@ -312,7 +311,7 @@ docker logs ecommerce-order --tail 30
 MongoDB:
 
 docker logs ecommerce-mongo --tail 30
-14. Public Frontend Verification
+# 14. Public Frontend Verification
 
 Open the following URL in a browser:
 
@@ -322,7 +321,9 @@ The e-commerce frontend should be accessible publicly.
 
 This is the final deployment verification.
 
-15. Review Screenshot Evidence
+# 15. Review Screenshot Evidence
+
+--------------------------------------------
 
 The following screenshots are for reference
 
@@ -373,29 +374,25 @@ ecommerce-product
 ecommerce-cart
 ecommerce-order
 ecommerce-frontend
+<img width="1405" height="105" alt="image" src="https://github.com/user-attachments/assets/201e25d0-de9e-4ebb-be0c-a05591a9f0c8" />
 
 Purpose: Demonstrates Docker images were pushed to Docker Hub.
 
 Screenshot 05 — Terraform Files
 
-Run:
 
 ls -lh terraform
+<img width="847" height="177" alt="image" src="https://github.com/user-attachments/assets/d520be68-2144-442a-a08b-e9a29914521f" />
 
 Purpose: Demonstrates Terraform infrastructure-as-code files.
 
 Screenshot 06 — Terraform Validation
 
-Run:
-
 cd terraform
 terraform validate
+<img width="905" height="75" alt="image" src="https://github.com/user-attachments/assets/c7a95bc4-f0de-409c-b530-1fb327ae21e8" />
 
-Expected:
-
-Success! The configuration is valid.
-
-Purpose: Demonstrates valid Terraform configuration.
+|_ Demonstrates valid Terraform configuration.
 
 Screenshot 07 — Terraform Apply / Output
 
@@ -405,29 +402,15 @@ terraform output
 
 Show:
 
-instance_id
-public_ip
-frontend_url
-user_service_url
-product_service_url
-cart_service_url
-order_service_url
+<img width="707" height="140" alt="image" src="https://github.com/user-attachments/assets/6485d7de-480a-479c-a1a6-14c15632cf13" />
 
-Purpose: Demonstrates successful AWS provisioning and application outputs.
+|_ Demonstrates successful AWS provisioning and application outputs.
 
 Screenshot 08 — AWS EC2
 
 AWS Console → EC2 → Instances.
 
-Show:
-
-Instance running
-Instance name
-Public IPv4 address
-Ubuntu AMI
-Instance type
-
-Purpose: Demonstrates EC2 infrastructure.
+<img width="1917" height="267" alt="image" src="https://github.com/user-attachments/assets/0946b57e-54ec-45bd-a52e-413b1a308372" />
 
 Screenshot 09 — EC2 Docker Containers
 
@@ -437,12 +420,7 @@ docker ps
 
 The screenshot should clearly show:
 
-ecommerce-frontend
-ecommerce-user
-ecommerce-product
-ecommerce-cart
-ecommerce-order
-ecommerce-mongo
+<img width="1873" height="402" alt="docker ps -a" src="https://github.com/user-attachments/assets/beed8a23-e2b8-4b94-a2e5-ab1d67351a9b" />
 
 Purpose: Demonstrates successful Docker deployment on AWS.
 
