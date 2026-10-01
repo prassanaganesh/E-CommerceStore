@@ -28,7 +28,7 @@ This project deploys a multi-service Node.js E-Commerce application using:
 
 # 2. Architecture
 
-text
+``` text
                          Internet
                             |
                             |
@@ -54,6 +54,8 @@ text
         +---------- Cart Service     3003
         |
         +---------- Order Service    3004
+```
+
 # 4. Docker Images
 
 The following five application services were containerized:
