@@ -433,6 +433,8 @@ curl http://localhost:3002/health
 curl http://localhost:3003/health
 curl http://localhost:3004/health
 
+<img width="1427" height="201" alt="image" src="https://github.com/user-attachments/assets/1b1a0ebe-f815-4722-98f4-134b16cf7f19" />
+
 Purpose: Demonstrates that backend services are running.
 
 Screenshot 11 — Docker Network
@@ -447,8 +449,6 @@ Screenshot 12 — Public Frontend
 
 Open in browser:
 
-http://<EC2_PUBLIC_IP>:3000
+http://44.213.124.13:3000
 
-Capture the complete browser window showing the deployed application.
-
-Purpose: Final proof that the frontend is publicly accessible.
+<img width="1917" height="1012" alt="image" src="https://github.com/user-attachments/assets/fd476d1f-5688-4a88-b0aa-64cfc852ab85" />
