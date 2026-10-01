@@ -1,83 +1,61 @@
-E-CommerceStore — Docker & Terraform AWS Deployment
-1. Project Overview
+# E-Commerce Store – AWS Terraform & Docker Deployment
 
-This project deploys a multi-service Node.js e-commerce application using:
+## 1. Project Overview
 
-Docker
-Docker Hub
-Terraform
-AWS EC2
-Ubuntu 22.04
-MongoDB
-Application Services
-Service	Port
-Frontend	3000
-User Service	3001
-Product Service	3002
-Cart Service	3003
-Order Service	3004
-MongoDB	27017
-2. Architecture
+This project deploys a multi-service Node.js E-Commerce application using:
+
+- AWS EC2
+- AWS VPC
+- Terraform
+- Docker
+- Docker Hub
+- MongoDB
+- Node.js
+- React
+
+### Application Services
+
+| Service | Port |
+|---|---:|
+| Frontend | 3000 |
+| User Service | 3001 |
+| Product Service | 3002 |
+| Cart Service | 3003 |
+| Order Service | 3004 |
+| MongoDB | 27017 |
+
+---
+
+# 2. Architecture
+
+```
+
+text
                          Internet
                             |
                             |
-                    EC2 Public IP
+                    Public IP / EC2
                             |
-                        Port 3000
+                    +-------+-------+
+                    |  AWS EC2      |
+                    | Ubuntu 22.04  |
+                    | Docker        |
+                    +-------+-------+
                             |
-                 +----------------------+
-                 |       EC2 Ubuntu     |
-                 |                      |
-                 |       Docker         |
-                 |                      |
-                 |  Frontend :3000      |
-                 |  User     :3001      |
-                 |  Product  :3002      |
-                 |  Cart     :3003      |
-                 |  Order    :3004      |
-                 |  MongoDB  :27017     |
-                 |                      |
-                 +----------------------+
+                    ecommerce-net
                             |
-                     Docker Network
-                            |
-                 +----------------------+
-                 |      AWS VPC         |
-                 |                      |
-                 |   Public Subnet      |
-                 |         |            |
-                 |  Internet Gateway    |
-                 +----------------------+
-
-Terraform provisions the AWS infrastructure.
-Docker Hub provides the application images.
-EC2 user-data installs Docker and starts all containers.
-3. Repository Structure
-E-CommerceStore/
-│
-├── backend/
-│   ├── user-service/
-│   │   └── Dockerfile
-│   ├── product-service/
-│   │   └── Dockerfile
-│   ├── cart-service/
-│   │   └── Dockerfile
-│   └── order-service/
-│       └── Dockerfile
-│
-├── frontend/
-│   └── Dockerfile
-│
-├── terraform/
-│   ├── provider.tf
-│   ├── variables.tf
-│   ├── network.tf
-│   ├── security.tf
-│   ├── ec2.tf
-│   ├── outputs.tf
-│   └── user-data.sh
-│
-└── DEPLOYMENT.md
+        +-------------------+-------------------+
+        |                   |                   |
+   Frontend            Backend Services      MongoDB
+   Port 3000                                  27017
+        |
+        +---------- User Service     3001
+        |
+        +---------- Product Service  3002
+        |
+        +---------- Cart Service     3003
+        |
+        +---------- Order Service    3004
 4. Docker Images
 
 The following five application services were containerized:
